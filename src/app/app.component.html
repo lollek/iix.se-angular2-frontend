@@ -1,3 +1,75 @@
-<h1>
-    {{title}}
-</h1>
+<nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapseNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand"
+       routerLink="/"
+       routerLinkActive="active">
+        iix-notes
+    </a>
+
+    <div class="collapse navbar-collapse"
+         id="collapseNavbar">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a href="javascript:void(0)"
+                   class="nav-link dropdown-toggle"
+                   id="navbarLoginDropdown"
+                   data-toggle="dropdown">
+                    <b>Login</b>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <form class="form p-1"
+                          role="form"
+                          method="post"
+                          [hidden]="loggedIn">
+                        <div class="p-2">
+                            <input type="text"
+                                   name="username"
+                                   class="form-control"
+                                   placeholder="User"
+                                   [(ngModel)]="user.username"
+                                   required>
+                        </div>
+                        <div class="p-2">
+                            <input type="password"
+                                   name="password"
+                                   class="form-control"
+                                   placeholder="Password"
+                                   [(ngModel)]="user.password"
+                                   required>
+                        </div>
+                        <div class="p-2">
+                            <button (click)="login()"
+                                    type="submit"
+                                    class="btn btn-primary btn-block">
+                                Login
+                            </button>
+                        </div>
+                        <p class="text-center"
+                           [hidden]="!errorMessage"
+                           [innerText]="errorMessage"></p>
+                    </form>
+
+                    <div [hidden]="!loggedIn">
+                        <p> Logged in as
+                            <strong><span [innerText]="user.username"></span></strong>
+                        </p>
+                        <button (click)="logout()"
+                                type="button"
+                                class="btn btn-danger btn-block">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
