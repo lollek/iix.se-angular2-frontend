@@ -1,0 +1,6 @@
+{
+    "/api": {
+        "target": "http://iix.se",
+        "secure": false
+    }
+}
