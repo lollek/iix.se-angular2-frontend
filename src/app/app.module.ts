@@ -5,16 +5,19 @@ import {HttpModule} from '@angular/http';
 import {RouterModule, Routes} from "@angular/router";
 
 import {AppComponent} from './app.component';
-import { PageNotFoundComponent } from './main/page-not-found.component';
+import {PageNotFoundComponent} from './main/page-not-found.component';
+import {FrontPageComponent} from "./main/front-page.component";
 
 const appRoutes: Routes = [
+    { path: '', pathMatch: 'full', component: FrontPageComponent },
     { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
     declarations: [
         AppComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        FrontPageComponent
     ],
     imports: [
         BrowserModule,
