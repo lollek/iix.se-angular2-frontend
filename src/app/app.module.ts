@@ -7,6 +7,8 @@ import {RouterModule, Routes} from "@angular/router";
 import {AppComponent} from './app.component';
 import {PageNotFoundComponent} from './main/page-not-found.component';
 import {FrontPageComponent} from "./main/front-page.component";
+import {NotesModule} from "./notes/notes.module";
+import {AuthService} from "./main/auth.service";
 
 const appRoutes: Routes = [
     { path: '', pathMatch: 'full', component: FrontPageComponent },
@@ -23,9 +25,12 @@ const appRoutes: Routes = [
         BrowserModule,
         FormsModule,
         HttpModule,
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes),
+        NotesModule
     ],
-    providers: [],
+    providers: [
+        AuthService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
