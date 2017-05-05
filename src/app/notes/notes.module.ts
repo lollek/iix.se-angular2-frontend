@@ -4,6 +4,7 @@ import {Routes, RouterModule} from "@angular/router";
 import {NotesComponent} from "./notes.component";
 import {BrowserModule} from "@angular/platform-browser";
 import {NotesService} from "./notes.service";
+import {CommonModule} from "../common/common.module";
 
 const routes: Routes = [
     { path: 'notes', component: NotesComponent }
@@ -15,7 +16,8 @@ const routes: Routes = [
     ],
     imports: [
         BrowserModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+        CommonModule
     ],
     providers: [
         NotesService

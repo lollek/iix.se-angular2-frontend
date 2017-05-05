@@ -11,7 +11,7 @@ import {NotesService} from "./notes.service";
     Notes
     <a [hidden]="!isLoggedIn" routerLink="notes/new" type="button" class="btn btn-primary">Add note</a>
 </h1>
-<!--<loading-spinner ng-if="!$ctrl.notes.$resolved"></loading-spinner>-->
+<loading-spinner [hidden]="!isLoadingData"></loading-spinner>
 <div [hidden]="isLoadingData" class="list-group">
     <a *ngFor="let note of notes"
        routerLink="/notes/{{ note.id }}"

@@ -19,7 +19,7 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent,
         PageNotFoundComponent,
-        FrontPageComponent
+        FrontPageComponent,
     ],
     imports: [
         BrowserModule,
