@@ -18,7 +18,7 @@ import {NotesService} from "./notes.service";
        class="list-group-item list-group-item-action justify-content-between">
         &raquo;
         {{ note.title }}
-        <span class="badge badge-default badge-pill" [innerText]="note.date"></span>
+        <span class="badge badge-default" [innerText]="note.date"></span>
     </a>
 </div>`
 })

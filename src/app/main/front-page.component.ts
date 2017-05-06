@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
     selector: 'front-page',
     template: `
 <div class="row">
-    <div *ngFor="let category of categories" class="col-sm-6 col-md-4 py-2">
+    <div *ngFor="let category of categories" class="col-xs-12 col-sm-6 col-lg-4 py-2">
         <div class="card">
             <a [routerLink]="category.link">
                 <img class="card-img-top img-fluid" [src]="category.img">
