@@ -101,7 +101,11 @@ export class NoteComponent implements OnInit {
 
     //noinspection JSUnusedGlobalSymbols
     save(): void {
-        this.notesService.save(this.note).subscribe(
+        const saveFn = this.note.id
+            ? this.notesService.update.bind(this.notesService)
+            : this.notesService.save.bind(this.notesService);
+
+       saveFn(this.note).subscribe(
             next => this.note = next,
             error => this.error('Failed to save note'),
             () => {
