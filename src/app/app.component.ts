@@ -1,22 +1,28 @@
 import {Component, OnInit} from '@angular/core';
 import {Http} from "@angular/http";
+import {UserRef} from "./main/user.model";
+import {AuthService} from "./main/auth.service";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-    user: { username: string, password: string};
+    user: { username: string, password: string };
     errorMessage: string;
-    loggedIn: boolean;
 
     constructor(
-        private http: Http
+        private http: Http,
+        private authService: AuthService
     ) {
     }
 
+    //noinspection JSUnusedGlobalSymbols
+    get loggedIn(): boolean {
+        return this.authService.loggedIn;
+    }
+
     ngOnInit(): void {
-        this.loggedIn = false;
         this.errorMessage = undefined;
         this.user = {
             username: '',
@@ -34,8 +40,8 @@ export class AppComponent implements OnInit {
 
     //noinspection JSUnusedGlobalSymbols
     logout() {
-         this.loggedIn = false;
          this.http.delete('/api/login').subscribe();
+         this.authService.setLoggedOut();
     }
 
     //noinspection JSUnusedGlobalSymbols
@@ -45,16 +51,14 @@ export class AppComponent implements OnInit {
          );
     }
 
-    loginSuccess(data: any) {
-        console.log('loginSuccess', data)
-        this.loggedIn = true;
+    loginSuccess(data: UserRef) {
+        this.authService.setLoggedIn(data);
         this.errorMessage = undefined;
         this.user.password = '';
     }
 
-    loginError(data: string) {
-        console.log('loginError', data)
-        this.loggedIn = false;
-        this.errorMessage = data;
+    loginError(data: { status: number, statusText: string }) {
+        this.authService.setLoggedOut();
+        this.errorMessage = `${data.status} - ${data.statusText}`;
     }
 }

@@ -22,8 +22,8 @@
                     <b>Login</b>
                 </a>
 
-                <div class="dropdown-menu dropdown-menu-right">
-                    <form class="form p-1"
+                <div class="dropdown-menu dropdown-menu-right p-2">
+                    <form class="form"
                           role="form"
                           method="post"
                           [hidden]="loggedIn">
@@ -50,21 +50,24 @@
                                 Login
                             </button>
                         </div>
-                        <p class="text-center"
-                           [hidden]="!errorMessage"
-                           [innerText]="errorMessage"></p>
+                        <div class="form-group has-danger">
+                            <p class="form-control-feedback text-center"
+                               [hidden]="!errorMessage"
+                               [innerText]="errorMessage"></p>
+                        </div>
                     </form>
 
-                    <div [hidden]="!loggedIn">
-                        <p> Logged in as
-                            <strong><span [innerText]="user.username"></span></strong>
+                    <form class="form" [hidden]="!loggedIn">
+                        <p class="text-center"> Logged in as
+                            <span class="font-weight-bold"
+                                  [innerText]="user.username"></span>
                         </p>
                         <button (click)="logout()"
                                 type="button"
                                 class="btn btn-danger btn-block">
                             Logout
                         </button>
-                    </div>
+                    </form>
                 </div>
             </li>
         </ul>
