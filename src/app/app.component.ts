@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
             username: '',
             password: ''
         };
+        this.checkLoggedIn();
     }
 
     //noinspection JSUnusedGlobalSymbols
