@@ -4,6 +4,7 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {AuthService} from "../main/auth.service";
 import {Note} from "./note.model";
 import {NotesService} from "./notes.service";
+import {ModalService} from "../common/modal.service";
 
 @Component({
     selector: 'note',
@@ -57,7 +58,8 @@ export class NoteComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private router: Router,
         private authService: AuthService,
-        private notesService: NotesService
+        private notesService: NotesService,
+        private modalService: ModalService
     ) {
     }
 
@@ -115,6 +117,6 @@ export class NoteComponent implements OnInit {
     }
 
     error(text: string): void {
-        console.log('error!', text)
+        this.modalService.error(text);
     }
 }

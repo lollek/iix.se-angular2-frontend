@@ -9,6 +9,7 @@ import {PageNotFoundComponent} from './main/page-not-found.component';
 import {FrontPageComponent} from "./main/front-page.component";
 import {NotesModule} from "./notes/notes.module";
 import {AuthService} from "./main/auth.service";
+import {ModalService} from "./common/modal.service";
 
 const appRoutes: Routes = [
     { path: '', pathMatch: 'full', component: FrontPageComponent },
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
         NotesModule
     ],
     providers: [
-        AuthService
+        AuthService,
+        ModalService
     ],
     bootstrap: [AppComponent]
 })
