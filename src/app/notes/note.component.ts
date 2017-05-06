@@ -4,7 +4,6 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {AuthService} from "../main/auth.service";
 import {Note} from "./note.model";
 import {NotesService} from "./notes.service";
-import {Subscription} from "rxjs";
 
 @Component({
     selector: 'note',
@@ -51,6 +50,7 @@ import {Subscription} from "rxjs";
 
 export class NoteComponent implements OnInit {
     note: Note;
+    noteBackup: Note;
     isEditing: boolean;
 
     constructor(
@@ -71,18 +71,17 @@ export class NoteComponent implements OnInit {
         this.isEditing = false;
         this.activatedRoute.params.subscribe((params: Params) => {
             if (params['id']) {
-                this.reloadNote(+params['id']);
+                this.notesService.get(+params['id']).subscribe(
+                    data => {
+                        this.note = data;
+                        this.noteBackup = data;
+                    },
+                    err => this.error('Failed to load note')
+                );
             } else {
                 this.isEditing = true;
             }
         });
-    }
-
-    reloadNote(id: number) {
-        this.notesService.get(id).subscribe(
-            data => this.note = data,
-            err => this.error('Failed to load note')
-        );
     }
 
     //noinspection JSUnusedGlobalSymbols
@@ -112,7 +111,7 @@ export class NoteComponent implements OnInit {
     //noinspection JSUnusedGlobalSymbols
     cancel(): void {
         this.isEditing = false;
-        this.reloadNote(this.note.id);
+        this.note = this.noteBackup;
     }
 
     error(text: string): void {
