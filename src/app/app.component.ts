@@ -48,7 +48,8 @@ export class AppComponent implements OnInit {
     //noinspection JSUnusedGlobalSymbols
     checkLoggedIn() {
          this.http.get('/api/login').subscribe(
-             res => this.loginSuccess(res)
+             res => this.loginSuccess(res),
+             err => void(0)
          );
     }
 
