@@ -19,7 +19,7 @@ import {Component} from '@angular/core';
 })
 
 export class FrontPageComponent {
-    categories = [{
+    private categories = [{
         text: 'Notes',
         link: '/notes',
         img: '/assets/notes.png'

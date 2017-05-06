@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
         };
     }
 
+    //noinspection JSUnusedGlobalSymbols
     login() {
         this.http.post('/api/login', this.user).subscribe(
             res => this.loginSuccess(res),
@@ -31,11 +32,13 @@ export class AppComponent implements OnInit {
         );
     }
 
+    //noinspection JSUnusedGlobalSymbols
     logout() {
          this.loggedIn = false;
          this.http.delete('/api/login').subscribe();
     }
 
+    //noinspection JSUnusedGlobalSymbols
     checkLoggedIn() {
          this.http.get('/api/login').subscribe(
              res => this.loginSuccess(res)

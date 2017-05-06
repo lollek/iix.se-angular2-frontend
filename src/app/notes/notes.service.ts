@@ -3,7 +3,7 @@ import {Http, Response} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/map';
 
-import {Note, NoteRef} from "./note.model";
+import {NoteRef} from "./note.model";
 
 @Injectable()
 export class NotesService {
