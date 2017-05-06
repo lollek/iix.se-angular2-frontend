@@ -9,7 +9,7 @@ import {NotesService} from "./notes.service";
     template: `
 <h1>
     Notes
-    <a [hidden]="!isLoggedIn" routerLink="notes/new" type="button" class="btn btn-primary">Add note</a>
+    <button [hidden]="!isLoggedIn" routerLink="/notes/new" class="btn btn-primary">Add note</button>
 </h1>
 <loading-spinner [hidden]="!isLoadingData"></loading-spinner>
 <div [hidden]="isLoadingData" class="list-group">

@@ -7,6 +7,14 @@ nav .dropdown-menu {
     -webkit-animation: spin2 1s infinite linear;
 }
 
+pre {
+    background-color: #eeeeee;
+    border: 1px solid #D9230F;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
 @keyframes spin {
     from { transform: scale(1) rotate(0deg); }
     to { transform: scale(1) rotate(360deg); }
