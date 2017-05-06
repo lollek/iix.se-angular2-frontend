@@ -2,13 +2,14 @@ import {Component, OnInit} from "@angular/core";
 import {Book} from "./book.model";
 import {BooksService} from "./books.service";
 import {ModalService} from "../../common/modal.service";
+import {AuthService} from "../../main/auth.service";
 
 @Component({
     selector: 'books',
     template: `
 <h1>Books
     <button [hidden]="!isEditing" (click)="toggleEdit()" class="btn btn-primary">Stop editing</button>
-    <button [hidden]="isEditing" (click)="toggleEdit()" class="btn btn-primary">Edit</button>
+    <button [hidden]="isEditing || !isLoggedIn" (click)="toggleEdit()" class="btn btn-primary">Edit</button>
 </h1>
 <loading-spinner [hidden]="!isLoadingData"></loading-spinner>
 
@@ -58,7 +59,12 @@ export class BooksComponent implements OnInit {
     isEditing: boolean;
     isLoadingData: boolean;
 
+    get isLoggedIn(): boolean {
+        return this.authService.loggedIn;
+    }
+
     constructor(
+        private authService: AuthService,
         private booksService: BooksService,
         private modalService: ModalService
     ) {
