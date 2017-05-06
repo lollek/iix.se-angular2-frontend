@@ -10,6 +10,7 @@ import {FrontPageComponent} from "./main/front-page.component";
 import {NotesModule} from "./notes/notes.module";
 import {AuthService} from "./main/auth.service";
 import {ModalService} from "./common/modal.service";
+import {WishlistModule} from "./wishlist/wishlist.module";
 
 const appRoutes: Routes = [
     { path: '', pathMatch: 'full', component: FrontPageComponent },
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
         FormsModule,
         HttpModule,
         RouterModule.forRoot(appRoutes),
-        NotesModule
+        NotesModule,
+        WishlistModule
     ],
     providers: [
         AuthService,

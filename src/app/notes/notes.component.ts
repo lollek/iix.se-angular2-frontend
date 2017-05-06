@@ -53,10 +53,11 @@ export class NotesComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.isLoadingData = false;
+        this.isLoadingData = true;
         this.filterText$ = new FormControl();
         this.notesService.list().subscribe(
             notes => {
+                this.isLoadingData = false;
                 notes = notes.reverse();
                 this.filterText$.valueChanges
                     .startWith(undefined)
