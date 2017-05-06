@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
 import {BrowserModule} from "@angular/platform-browser";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import {NotesComponent} from "./notes.component";
 import {NotesService} from "./notes.service";
@@ -22,6 +22,7 @@ const routes: Routes = [
     imports: [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         RouterModule.forChild(routes),
         CommonModule
     ],
