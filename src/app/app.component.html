@@ -46,7 +46,8 @@
                         <div class="p-2">
                             <button (click)="login()"
                                     type="submit"
-                                    class="btn btn-primary btn-block">
+                                    class="btn btn-outline-success btn-block">
+                                <span class="fa fa-sign-in"></span>
                                 Login
                             </button>
                         </div>
@@ -64,7 +65,8 @@
                         </p>
                         <button (click)="logout()"
                                 type="button"
-                                class="btn btn-danger btn-block">
+                                class="btn btn-outline-danger btn-block">
+                            <span class="fa fa-sign-in"></span>
                             Logout
                         </button>
                     </form>
@@ -91,7 +93,10 @@
                 <p class="text-center" id="modalText">Modal body text goes here.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">
+                    <span class="fa fa-times"></span>
+                    Close
+                </button>
             </div>
         </div>
     </div>
