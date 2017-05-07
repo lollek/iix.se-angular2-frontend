@@ -12,6 +12,7 @@ import {AuthService} from "./main/auth.service";
 import {ModalService} from "./common/modal.service";
 import {WishlistModule} from "./wishlist/wishlist.module";
 import {BeersModule} from "./beers/beers.module";
+import {MoriaModule} from "./moria/moria.module";
 
 const appRoutes: Routes = [
     { path: '', pathMatch: 'full', component: FrontPageComponent },
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes),
         NotesModule,
         WishlistModule,
-        BeersModule
+        BeersModule,
+        MoriaModule
     ],
     providers: [
         AuthService,
