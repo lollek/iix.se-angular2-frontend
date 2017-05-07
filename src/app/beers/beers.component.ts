@@ -20,7 +20,12 @@ import {Router} from "@angular/router";
     <div class="form-group">
         <div class="input-group">
             <div class="input-group-addon"><span class="fa fa-search"></span></div>
-            <input type="text" class="form-control" placeholder="Filter" name="textFilter" [formControl]="filterText$">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Filter"
+                   [formControl]="filterText$"
+                   autocomplete="off"
+                   name="textFilter">
         </div>
     </div>
 </form>
