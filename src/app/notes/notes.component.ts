@@ -61,7 +61,7 @@ export class NotesComponent implements OnInit {
         this.notesService.list().subscribe(
             notes => {
                 this.isLoadingData = false;
-                notes = notes.reverse();
+                notes = notes.sort((a: NoteRef, b: NoteRef) => b.date.localeCompare(a.date));
                 this.filterText$.valueChanges
                     .startWith(undefined)
                     .map((filterText: string): NoteRef[] =>
