@@ -73,7 +73,7 @@ export class NotesComponent implements OnInit {
         );
     }
 
-    private get isLoggedIn(): boolean {
+    get isLoggedIn(): boolean {
         return this.authService.loggedIn;
     }
 
