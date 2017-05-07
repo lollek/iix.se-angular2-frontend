@@ -3,12 +3,13 @@ import {AuthService} from "../main/auth.service";
 import {BeersService} from "./beers.service";
 import {FormControl} from "@angular/forms";
 import {Beer} from "./beer.model";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'beers',
     template: `
 <h1>Beer
-    <button [hidden]="!isLoggedIn" class="btn btn-outline-success">
+    <button [hidden]="!isLoggedIn" class="btn btn-outline-success" routerLink="/beers/new">
         <span class="fa fa-plus"></span>
         Add beer
     </button>
@@ -38,7 +39,7 @@ import {Beer} from "./beer.model";
     </thead>
 
     <tbody>
-        <tr *ngFor="let beer of filteredBeers">
+        <tr *ngFor="let beer of filteredBeers" (click)="edit(beer)">
             <td>{{ beer.name }}</td>
             <td>{{ beer.brewery }}</td>
             <td>{{ beer.percentage | number: '1.1' }}</td>
@@ -59,6 +60,7 @@ export class BeersComponent implements OnInit {
     sortReverse: boolean;
 
     constructor(
+        private router: Router,
         private authService: AuthService,
         private beersService: BeersService
     ) {
@@ -110,6 +112,13 @@ export class BeersComponent implements OnInit {
         });
         if (this.sortReverse) {
             this.beers = this.beers.reverse();
+        }
+    }
+
+    //noinspection JSUnusedGlobalSymbols
+    edit(beer: Beer): void {
+        if (this.isLoggedIn) {
+            this.router.navigate(['/beers', beer.id])
         }
     }
 }
