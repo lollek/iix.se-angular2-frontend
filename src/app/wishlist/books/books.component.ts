@@ -8,8 +8,14 @@ import {AuthService} from "../../main/auth.service";
     selector: 'books',
     template: `
 <h1>Books
-    <button [hidden]="!isEditing" (click)="toggleEdit()" class="btn btn-primary">Stop editing</button>
-    <button [hidden]="isEditing || !isLoggedIn" (click)="toggleEdit()" class="btn btn-primary">Edit</button>
+    <button [hidden]="isEditing || !isLoggedIn" (click)="toggleEdit()" class="btn btn-outline-info">
+        <span class="fa fa-pencil"></span>
+        Edit
+    </button>
+    <button [hidden]="!isEditing" (click)="toggleEdit()" class="btn btn-outline-warning">
+        <span class="fa fa-times"></span>
+        Cancel
+    </button>
 </h1>
 <loading-spinner [hidden]="!isLoadingData"></loading-spinner>
 
@@ -28,7 +34,10 @@ import {AuthService} from "../../main/auth.service";
 </div>
     
 <div [hidden]="!isEditing">
-    <button (click)="add()" class="btn btn-primary">Add row</button>
+    <button (click)="add()" class="btn btn-outline-success">
+        <span class="fa fa-plus"></span>
+        Add row
+    </button>
     <table class="table table-hover table-responsive">
         <thead>
             <tr class="header">
@@ -44,9 +53,24 @@ import {AuthService} from "../../main/auth.service";
                 <td><input type="text" [(ngModel)]="book.author" name="author"></td>
                 <td><input type="text" [(ngModel)]="book.other" name="other"></td>
                 <td><input type="text" [(ngModel)]="book.image" name="image"></td>
-                <td><button (click)="save(book)" class="btn btn-success">Save</button></td>
-                <td><button (click)="reload(book)" class="btn btn-warning">Reload</button></td>
-                <td><button (click)="remove(book)" class="btn btn-danger">Delete</button></td>
+                <td>
+                    <button (click)="save(book)" class="btn btn-outline-success">
+                        <span class="fa fa-floppy-o"></span>
+                        Save
+                    </button>
+                </td>
+                <td>
+                    <button (click)="reload(book)" class="btn btn-outline-warning">
+                        <span class="fa fa-refresh"></span>
+                        Reload
+                    </button>
+                </td>
+                <td>
+                    <button (click)="remove(book)" class="btn btn-outline-danger">
+                        <span class="fa fa-trash"></span>
+                        Delete
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>

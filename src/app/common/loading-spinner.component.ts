@@ -4,7 +4,7 @@ import {Component} from "@angular/core";
     selector: 'loading-spinner',
     template: `
 <h3>Loading
-  <span class="fa fa-refresh spinning"></span>
+  <span class="fa fa-spinner fa-pulse"></span>
 </h3>`
 })
 

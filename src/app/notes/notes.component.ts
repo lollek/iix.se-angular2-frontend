@@ -11,7 +11,10 @@ import {FormControl} from "@angular/forms";
     template: `
 <h1>
     Notes
-    <button [hidden]="!isLoggedIn" routerLink="/notes/new" class="btn btn-primary">Add note</button>
+    <button [hidden]="!isLoggedIn" routerLink="/notes/new" class="btn btn-outline-success">
+        <span class="fa fa-plus"></span>
+        Add note
+    </button>
 </h1>
 <form>
     <div class="form-group">

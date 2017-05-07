@@ -13,8 +13,14 @@ import {ModalService} from "../common/modal.service";
 
     <div [hidden]="isEditing">
         <h1 [innerText]="note.title"></h1>
-        <button [hidden]="!isLoggedIn" (click)="remove()" class="btn btn-danger">Delete</button>
-        <button [hidden]="!isLoggedIn" (click)="edit()" class="btn btn-primary">Edit</button>
+        <button [hidden]="!isLoggedIn" (click)="remove()" class="btn btn-outline-danger">
+            <span class="fa fa-trash"></span>
+            Delete
+        </button>
+        <button [hidden]="!isLoggedIn" (click)="edit()" class="btn btn-outline-info">
+            <span class="fa fa-pencil"></span>
+            Edit
+        </button>
         <hr>
         <markdown [data]="note.text"></markdown>
     </div>
@@ -42,8 +48,14 @@ import {ModalService} from "../common/modal.service";
                           rows="20"
                           name="text"></textarea>
             </div>
-            <button (click)="save()" class="btn btn-primary">Save</button>
-            <button (click)="cancel()" class="btn btn-warning">Cancel</button>
+            <button (click)="save()" class="btn btn-outline-success">
+                <span class="fa fa-floppy-o"></span>
+                Save
+            </button>
+            <button (click)="cancel()" class="btn btn-outline-warning">
+                <span class="fa fa-times"></span>
+                Cancel
+            </button>
         </div>
     </form>
 </div>`
