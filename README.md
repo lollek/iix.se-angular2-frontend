@@ -18,5 +18,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## Icons
+## Theme
+* [Simplex](https://bootswatch.com/4-alpha/simplex/)
 * [CMYK](http://www.iconarchive.com/show/beautiful-flat-icons-by-elegantthemes/cmyk-icon.html)
+* [Bootstrap4-alpha](https://v4-alpha.getbootstrap.com/getting-started/introduction/)
