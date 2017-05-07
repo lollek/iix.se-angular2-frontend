@@ -3,9 +3,8 @@ import {Component} from "@angular/core";
 @Component({
     selector: 'wishlist',
     template: `
-<books>
-<br>
-<games>
+<books></books>
+<games></games>
 `
 })
 

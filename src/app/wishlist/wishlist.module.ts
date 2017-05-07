@@ -1,13 +1,14 @@
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
+import {FormsModule} from "@angular/forms";
+import {BrowserModule} from "@angular/platform-browser";
 
 import {CommonModule} from "../common/common.module";
 import {BooksComponent} from "./books/books.component";
-import {WishlistComponent} from "./wishlist.component";
-import {GamesComponent} from "./games.component";
-import {FormsModule} from "@angular/forms";
-import {BrowserModule} from "@angular/platform-browser";
 import {BooksService} from "./books/books.service";
+import {GamesComponent} from "./games/games.component";
+import {GamesService} from "./games/games.service";
+import {WishlistComponent} from "./wishlist.component";
 
 const routes: Routes = [
     { path: 'wishlist', component: WishlistComponent }
@@ -26,7 +27,8 @@ const routes: Routes = [
         CommonModule
     ],
     providers: [
-        BooksService
+        BooksService,
+        GamesService
     ],
     exports: [
         RouterModule
