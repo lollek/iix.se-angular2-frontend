@@ -46,7 +46,7 @@ import {AuthService} from "../../main/auth.service";
                 <td><input type="text" [(ngModel)]="book.image" name="image"></td>
                 <td><button (click)="save(book)" class="btn btn-success">Save</button></td>
                 <td><button (click)="reload(book)" class="btn btn-warning">Reload</button></td>
-                <td><button (click)="delete(book)" class="btn btn-danger">Delete</button></td>
+                <td><button (click)="remove(book)" class="btn btn-danger">Delete</button></td>
             </tr>
         </tbody>
     </table>
@@ -56,9 +56,11 @@ import {AuthService} from "../../main/auth.service";
 
 export class BooksComponent implements OnInit {
     books: Book[];
+    booksBackup: Book[];
     isEditing: boolean;
     isLoadingData: boolean;
 
+    //noinspection JSUnusedGlobalSymbols
     get isLoggedIn(): boolean {
         return this.authService.loggedIn;
     }
@@ -76,18 +78,49 @@ export class BooksComponent implements OnInit {
         this.booksService.list().subscribe(
             next => {
                 this.isLoadingData = false;
-                this.books = next
+                this.books = next;
+                this.booksBackup = next;
             },
             error => this.modalService.error('Failed to get data from server')
         );
     }
 
+    //noinspection JSUnusedGlobalSymbols
     toggleEdit(): void {
         this.isEditing = !this.isEditing;
     }
 
-    add(): void { }
-    save(book: Book): void {}
-    reload(book: Book): void {}
-    delete(book: Book): void {}
+    //noinspection JSUnusedGlobalSymbols
+    add(): void {
+        this.books.unshift(new Book());
+    }
+
+    //noinspection JSUnusedGlobalSymbols
+    save(book: Book): void {
+        const saveFn = book.id
+            ? this.booksService.update.bind(this.booksService)
+            : this.booksService.save.bind(this.booksService);
+
+        saveFn(book).subscribe(
+            next => book = next,
+            error => this.modalService.error('Failed to save book!')
+        );
+    }
+
+    //noinspection JSUnusedGlobalSymbols
+    reload(book: Book): void {
+        book = this.booksBackup.filter(original => original.id === book.id)[0];
+    }
+
+    //noinspection JSUnusedGlobalSymbols
+    remove(book: Book): void {
+        if (book.id) {
+            this.booksService.remove(book).subscribe(
+                next => this.books = this.books.filter(it => it.id !== book.id),
+                error => this.modalService.error('Failed to delete book')
+            );
+        } else {
+            this.books = this.books.filter( it => it !== book);
+        }
+    }
 }
