@@ -11,6 +11,7 @@ import {NotesModule} from "./notes/notes.module";
 import {AuthService} from "./main/auth.service";
 import {ModalService} from "./common/modal.service";
 import {WishlistModule} from "./wishlist/wishlist.module";
+import {BeersModule} from "./beers/beers.module";
 
 const appRoutes: Routes = [
     { path: '', pathMatch: 'full', component: FrontPageComponent },
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
         HttpModule,
         RouterModule.forRoot(appRoutes),
         NotesModule,
-        WishlistModule
+        WishlistModule,
+        BeersModule
     ],
     providers: [
         AuthService,
