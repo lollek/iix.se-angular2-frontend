@@ -13,6 +13,7 @@ import {ModalService} from "./common/modal.service";
 import {WishlistModule} from "./wishlist/wishlist.module";
 import {BeersModule} from "./beers/beers.module";
 import {MoriaModule} from "./moria/moria.module";
+import {ScratchModule} from "./scratch/scratch.module";
 
 const appRoutes: Routes = [
     { path: '', pathMatch: 'full', component: FrontPageComponent },
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
         NotesModule,
         WishlistModule,
         BeersModule,
-        MoriaModule
+        MoriaModule,
+        ScratchModule
     ],
     providers: [
         AuthService,
