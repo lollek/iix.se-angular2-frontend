@@ -15,23 +15,4 @@ export class BooksService {
         return this.http.get('api/books')
             .map((response: Response) => response.json() as Array<Book>);
     }
-
-    get(id: number): Observable<Book> {
-        return this.http.get(`api/books/${id}`)
-            .map((response: Response) => response.json() as Book);
-    }
-
-    save(book: Book): Observable<Book> {
-        return this.http.post(`api/books`, book)
-            .map((response: Response) => response.json() as Book);
-    }
-
-    update(book: Book): Observable<Book> {
-        return this.http.put(`api/books/${book.id}`, book)
-            .map((response: Response) => response.json() as Book);
-    }
-
-    remove(book: Book): Observable<any> {
-        return this.http.delete(`api/books/${book.id}`);
-    }
 }

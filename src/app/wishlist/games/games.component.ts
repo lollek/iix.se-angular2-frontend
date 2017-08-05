@@ -18,7 +18,7 @@ import {GamesService} from "./games.service";
             <div class="card">
                 <img class="card-img-top img-fluid" [src]="game.image">
                 <div class="card-block">
-                    <h4 class="card-title text-center" [innerText]="game.name"></h4>
+                    <h5 class="card-title text-center" [innerText]="game.name"></h5>
                 </div>
             </div>
         </a>
