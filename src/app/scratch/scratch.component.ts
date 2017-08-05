@@ -85,10 +85,6 @@ export class ScratchComponent implements OnInit {
             error => this.error('Failed to save note'),
             () => {
                 this.isEditing = false;
-                if (this.scratch.data == '') {
-                    this.scratch.data = ' ';
-                    this.scratch.data = '';
-                }
             }
         );
     }
