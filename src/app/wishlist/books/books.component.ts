@@ -19,6 +19,8 @@ import {ModalService} from "../../common/modal.service";
         </div>
     </div>
 </div>
+
+<small>Data from <a href="https://www.goodreads.com/review/list/37418936-olle?shelf=to-read">Goodreads</a></small>
 `
 })
 
