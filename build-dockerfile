@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+set -euo pipefail
+
+npm run dist
+sudo docker build -t loll3k/angular2-frontend .
