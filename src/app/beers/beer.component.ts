@@ -73,6 +73,15 @@ import {BeersService} from "./beers.service";
                            name="oscore">
                 </div>
             </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Comment</label>
+                <div class="col-10">
+                    <textarea class="form-control"
+                              [(ngModel)]="beer.comment"
+                              rows="3"
+                              name="text"></textarea>
+                </div>
+            </div>
             <button (click)="remove()" class="btn btn-outline-danger">
                 <span class="fa fa-trash"></span>
                 Delete
