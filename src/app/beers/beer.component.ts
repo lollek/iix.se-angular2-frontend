@@ -10,24 +10,24 @@ import {BeersService} from "./beers.service";
     template: `
         <form>
             <div class="form-group row">
-                <label class="col-2 col-form-label">Name</label>
-                <div class="col-10">
+                <label class="col-md-3 col-sm-2 col-form-label">Name</label>
+                <div class="col-md-9 col-sm-10">
                     <input class="form-control"
                            [(ngModel)]="beer.name"
                            name="name">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-2 col-form-label">Brewery</label>
-                <div class="col-10">
+                <label class="col-md-3 col-sm-2 col-form-label">Brewery</label>
+                <div class="col-md-3 col-sm-10">
                     <input class="form-control"
                            [(ngModel)]="beer.brewery"
                            name="brewery">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-2 col-form-label">Percentage</label>
-                <div class="col-10">
+                <label class="col-md-3 col-sm-2 col-form-label">Percentage</label>
+                <div class="col-md-3 col-sm-10">
                     <input type="number"
                            class="form-control"
                            [(ngModel)]="beer.percentage"
@@ -36,24 +36,24 @@ import {BeersService} from "./beers.service";
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-2 col-form-label">Country</label>
-                <div class="col-10">
+                <label class="col-md-3 col-sm-2 col-form-label">Country</label>
+                <div class="col-md-9 col-sm-10">
                     <input class="form-control"
                            [(ngModel)]="beer.country"
                            name="country">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-2 col-form-label">Style</label>
-                <div class="col-10">
+                <label class="col-md-3 col-sm-2 col-form-label">Style</label>
+                <div class="col-md-9 col-sm-10">
                     <input class="form-control"
                         [(ngModel)]="beer.style"
                         name="style">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-2 col-form-label">S-Score</label>
-                <div class="col-10">
+                <label class="col-md-3 col-sm-2 col-form-label">S-Score</label>
+                <div class="col-md-9 col-sm-10">
                     <input type="number"
                            min="0"
                            max="5"
@@ -63,8 +63,8 @@ import {BeersService} from "./beers.service";
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-2 col-form-label">O-Score</label>
-                <div class="col-10">
+                <label class="col-md-3 col-sm-2 col-form-label">O-Score</label>
+                <div class="col-md-9 col-sm-10">
                     <input type="number"
                            min="0"
                            max="5"
@@ -74,8 +74,8 @@ import {BeersService} from "./beers.service";
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-2 col-form-label">Comment</label>
-                <div class="col-10">
+                <label class="col-md-3 col-sm-2 col-form-label">Comment</label>
+                <div class="col-md-9 col-sm-10">
                     <textarea class="form-control"
                               [(ngModel)]="beer.comment"
                               rows="3"
