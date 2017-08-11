@@ -5,6 +5,7 @@ import {AuthService} from "../main/auth.service";
 import {NoteRef} from "./note.model";
 import {NotesService} from "./notes.service";
 import {FormControl} from "@angular/forms";
+import {ModalService} from "../common/modal.service";
 
 @Component({
     selector: 'notes',
@@ -51,7 +52,8 @@ export class NotesComponent implements OnInit {
 
     constructor(
         private authService: AuthService,
-        private notesService: NotesService
+        private notesService: NotesService,
+        private modalService: ModalService
     ) {
     }
 
@@ -69,7 +71,8 @@ export class NotesComponent implements OnInit {
                             ? notes.filter((note: NoteRef) => note.title.toLowerCase().indexOf(filterText.toLowerCase()) !== -1)
                             : notes
                     ).subscribe(notes => this.filteredNotes = notes);
-            }
+            },
+            error => this.error(error)
         );
     }
 
@@ -77,4 +80,7 @@ export class NotesComponent implements OnInit {
         return this.authService.loggedIn;
     }
 
+    error(text: string): void {
+        this.modalService.error(text);
+    }
 }
