@@ -4,57 +4,58 @@ import {BeersService} from "./beers.service";
 import {FormControl} from "@angular/forms";
 import {Beer} from "./beer.model";
 import {Router} from "@angular/router";
+import {ModalService} from "../common/modal.service";
 
 @Component({
     selector: 'beers',
     template: `
-<h1>Beer
-    <button [hidden]="!isLoggedIn" class="btn btn-outline-success" routerLink="/beers/new">
-        <span class="fa fa-plus"></span>
-        Add beer
-    </button>
-</h1>
+        <h1>Beer
+            <button [hidden]="!isLoggedIn" class="btn btn-outline-success" routerLink="/beers/new">
+                <span class="fa fa-plus"></span>
+                Add beer
+            </button>
+        </h1>
 
 
-<form>
-    <div class="form-group">
-        <div class="input-group">
-            <div class="input-group-addon"><span class="fa fa-search"></span></div>
-            <input type="text"
-                   class="form-control"
-                   placeholder="Filter"
-                   [formControl]="filterText$"
-                   autocomplete="off"
-                   name="textFilter">
-        </div>
-    </div>
-</form>
+        <form>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="fa fa-search"></span></div>
+                    <input
+                        class="form-control"
+                        placeholder="Filter"
+                        [formControl]="filterText$"
+                        autocomplete="off"
+                        name="textFilter">
+                </div>
+            </div>
+        </form>
 
-<table class="table table-hover table-responsive">
-    <thead>
-        <tr class="header">
-            <th><a href="javascript:void(0)" (click)="sort('name')">Name</a></th>
-            <th><a href="javascript:void(0)" (click)="sort('brewery')">Brewery</a></th>
-            <th><a href="javascript:void(0)" (click)="sort('percentage')">Percentage</a></th>
-            <th><a href="javascript:void(0)" (click)="sort('country')">Country</a></th>
-            <th><a href="javascript:void(0)" (click)="sort('type')">Type</a></th>
-            <th><a href="javascript:void(0)" (click)="sort('sscore')">S-Score</a></th>
-            <th><a href="javascript:void(0)" (click)="sort('oscore')">O-Score</a></th>
-        </tr>
-    </thead>
+        <table class="table table-hover table-responsive">
+            <thead>
+            <tr class="header">
+                <th><a href="javascript:void(0)" (click)="sort('name')">Name</a></th>
+                <th><a href="javascript:void(0)" (click)="sort('brewery')">Brewery</a></th>
+                <th><a href="javascript:void(0)" (click)="sort('percentage')">Percentage</a></th>
+                <th><a href="javascript:void(0)" (click)="sort('country')">Country</a></th>
+                <th><a href="javascript:void(0)" (click)="sort('type')">Type</a></th>
+                <th><a href="javascript:void(0)" (click)="sort('sscore')">S-Score</a></th>
+                <th><a href="javascript:void(0)" (click)="sort('oscore')">O-Score</a></th>
+            </tr>
+            </thead>
 
-    <tbody>
-        <tr *ngFor="let beer of filteredBeers" (click)="edit(beer)">
-            <td>{{ beer.name }}</td>
-            <td>{{ beer.brewery }}</td>
-            <td>{{ beer.percentage | number: '1.1' }}</td>
-            <td>{{ beer.country }}</td>
-            <td>{{ beer.style }}</td>
-            <td>{{ beer.sscore }}</td>
-            <td >{{ beer.oscore }}</td>
-        </tr>
-    </tbody>
-</table>`
+            <tbody>
+            <tr *ngFor="let beer of filteredBeers" (click)="edit(beer)">
+                <td>{{ beer.name }}</td>
+                <td>{{ beer.brewery }}</td>
+                <td>{{ beer.percentage | number: '1.1' }}</td>
+                <td>{{ beer.country }}</td>
+                <td>{{ beer.style }}</td>
+                <td>{{ beer.sscore }}</td>
+                <td>{{ beer.oscore }}</td>
+            </tr>
+            </tbody>
+        </table>`
 })
 
 export class BeersComponent implements OnInit {
@@ -67,9 +68,9 @@ export class BeersComponent implements OnInit {
     constructor(
         private router: Router,
         private authService: AuthService,
-        private beersService: BeersService
-    ) {
-    }
+        private beersService: BeersService,
+        private modalService: ModalService
+    ) {}
 
     ngOnInit(): void {
         this.filterText$ = new FormControl();
@@ -90,7 +91,8 @@ export class BeersComponent implements OnInit {
                                 (beer.style && beer.style.toLowerCase().indexOf(filterText.toLowerCase()) !== -1))
                             : this.beers
                     ).subscribe(beers => this.filteredBeers = beers);
-            }
+            },
+            error => this.modalService.error(error)
         );
     }
 
