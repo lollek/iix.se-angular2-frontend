@@ -14,26 +14,26 @@ export class BeersService {
     }
 
     list(): Observable<Beer[]> {
-        return this.http.get('api/beers')
+        return this.http.get('api/beer')
             .map((response: Response) => response.json() as Array<Beer>);
     }
 
     get(id: number): Observable<Beer> {
-        return this.http.get(`api/beers/${id}`)
+        return this.http.get(`api/beer/${id}`)
             .map((response: Response) => response.json() as Beer);
     }
 
     save(beer: Beer): Observable<Beer> {
-        return this.http.post(`api/beers`, beer)
+        return this.http.post(`api/beer`, beer)
             .map((response: Response) => response.json() as Beer);
     }
 
     update(beer: Beer): Observable<Beer> {
-        return this.http.put(`api/beers/${beer.id}`, beer)
+        return this.http.put(`api/beer/${beer.id}`, beer)
             .map((response: Response) => response.json() as Beer);
     }
 
     remove(beer: Beer): Observable<any> {
-        return this.http.delete(`api/beers/${beer.id}`);
+        return this.http.delete(`api/beer/${beer.id}`);
     }
 }
