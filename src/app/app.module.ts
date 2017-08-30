@@ -11,7 +11,7 @@ import {NotesModule} from "./notes/notes.module";
 import {AuthService} from "./main/auth.service";
 import {ModalService} from "./common/modal.service";
 import {WishlistModule} from "./wishlist/wishlist.module";
-import {BeersModule} from "./beers/beers.module";
+import {BeveragesModule} from "./beverages/beverages.module";
 import {MoriaModule} from "./moria/moria.module";
 import {ScratchModule} from "./scratch/scratch.module";
 
@@ -33,7 +33,7 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes, { useHash: true }),
         NotesModule,
         WishlistModule,
-        BeersModule,
+        BeveragesModule,
         MoriaModule,
         ScratchModule
     ],

@@ -32,7 +32,7 @@ export class FrontPageComponent {
         isVisible: () => true
     }, {
         text: 'Beers',
-        link: '/beers',
+        link: '/beverages',
         img: '/assets/beers.png',
         isVisible: () => true
     }, {

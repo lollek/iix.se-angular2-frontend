@@ -4,20 +4,20 @@ import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import {CommonModule} from "../common/common.module";
-import {BeersService} from "./beers.service";
-import {BeersComponent} from "./beers.component";
-import {BeerComponent} from "./beer.component";
+import {BeveragesService} from "./beverages.service";
+import {BeveragesComponent} from "./beverages.component";
+import {BeverageComponent} from "./bevereage.component";
 
 const routes: Routes = [
-    { path: 'beers', component: BeersComponent },
-    { path: 'beers/new', component: BeerComponent },
-    { path: 'beers/:id', component: BeerComponent },
+    { path: 'beverages', component: BeveragesComponent },
+    { path: 'beverages/new', component: BeverageComponent },
+    { path: 'beverages/:id', component: BeverageComponent },
 ];
 
 @NgModule({
     declarations: [
-        BeersComponent,
-        BeerComponent
+        BeveragesComponent,
+        BeverageComponent
     ],
     imports: [
         BrowserModule,
@@ -27,10 +27,10 @@ const routes: Routes = [
         CommonModule
     ],
     providers: [
-        BeersService
+        BeveragesService,
     ],
     exports: [
         RouterModule
     ]
 })
-export class BeersModule { }
+export class BeveragesModule { }
