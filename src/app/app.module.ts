@@ -14,6 +14,7 @@ import {WishlistModule} from "./wishlist/wishlist.module";
 import {BeveragesModule} from "./beverages/beverages.module";
 import {MoriaModule} from "./moria/moria.module";
 import {ScratchModule} from "./scratch/scratch.module";
+import {CommonModule} from "./common/common.module";
 
 const appRoutes: Routes = [
     { path: '', pathMatch: 'full', component: FrontPageComponent },
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
         FormsModule,
         HttpModule,
         RouterModule.forRoot(appRoutes, { useHash: true }),
+        CommonModule,
         NotesModule,
         WishlistModule,
         BeveragesModule,

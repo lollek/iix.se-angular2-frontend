@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Http} from "@angular/http";
 import {UserRef} from "./main/user.model";
 import {AuthService} from "./main/auth.service";
+import {HttpClient} from "./common/http-client.service";
 
 @Component({
     selector: 'app-root',
@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
     errorMessage: string;
 
     constructor(
-        private http: Http,
+        private httpClient: HttpClient,
         private authService: AuthService
     ) {
     }
@@ -28,12 +28,11 @@ export class AppComponent implements OnInit {
             username: '',
             password: ''
         };
-        this.checkLoggedIn();
     }
 
     //noinspection JSUnusedGlobalSymbols
     login() {
-        this.http.post('/api/login', this.user).subscribe(
+        this.httpClient.post('/api/login', this.user).subscribe(
             res => this.loginSuccess(res),
             err => this.loginError(err)
         );
@@ -41,16 +40,7 @@ export class AppComponent implements OnInit {
 
     //noinspection JSUnusedGlobalSymbols
     logout() {
-         this.http.delete('/api/login').subscribe();
          this.authService.setLoggedOut();
-    }
-
-    //noinspection JSUnusedGlobalSymbols
-    checkLoggedIn() {
-         this.http.get('/api/login').subscribe(
-             res => this.loginSuccess(res),
-             err => void(0)
-         );
     }
 
     loginSuccess(data: UserRef) {

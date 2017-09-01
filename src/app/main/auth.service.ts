@@ -4,17 +4,19 @@ import {UserRef} from "./user.model";
 
 @Injectable()
 export class AuthService {
-    currentUser: UserRef;
 
+    // noinspection JSMethodCanBeStatic
     get loggedIn(): boolean {
-        return !!this.currentUser
+        return !!localStorage.getItem('jwt');
     }
 
+    // noinspection JSMethodCanBeStatic
     setLoggedIn(userRef: UserRef): void {
-        this.currentUser = userRef
+        localStorage.setItem('jwt', (<any>userRef).headers.get('Authorization').substring('Bearer '.length));
     }
 
+    // noinspection JSMethodCanBeStatic
     setLoggedOut(): void {
-        this.currentUser = undefined;
+        localStorage.removeItem('jwt');
     }
 }
