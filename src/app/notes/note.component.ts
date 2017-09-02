@@ -90,7 +90,7 @@ export class NoteComponent implements OnInit {
                         this.note = data;
                         this.noteBackup = data;
                     },
-                    err => this.error('Failed to load note')
+                    err => this.error(err)
                 );
             } else {
                 this.isEditing = true;
@@ -102,7 +102,7 @@ export class NoteComponent implements OnInit {
     remove(): void {
         this.notesService.remove(this.note).subscribe(
             next => this.router.navigate(['/notes']),
-            error => this.error('Failed to delete note')
+            error => this.error(error)
         );
     }
 
@@ -119,7 +119,7 @@ export class NoteComponent implements OnInit {
 
        saveFn(this.note).subscribe(
             next => this.note = next,
-            error => this.error('Failed to save note'),
+            error => this.error(error),
             () => {
                 this.isEditing = false
             }

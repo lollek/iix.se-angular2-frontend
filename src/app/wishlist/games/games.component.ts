@@ -44,7 +44,7 @@ export class GamesComponent implements OnInit {
                 this.isLoadingData = false;
                 this.games = next
             },
-            error => this.modalService.error('Failed to get data from server')
+            error => this.modalService.error(error)
         );
     }
 }

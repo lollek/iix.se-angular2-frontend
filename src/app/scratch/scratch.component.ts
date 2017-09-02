@@ -66,7 +66,7 @@ export class ScratchComponent implements OnInit {
                 this.scratch = data;
                 this.scratchBackup = data;
             },
-            err => this.error('Failed to load note')
+            err => this.error(err)
         );
     }
 
@@ -82,7 +82,7 @@ export class ScratchComponent implements OnInit {
                 this.scratch = next;
                 this.scratchBackup = next;
             },
-            error => this.error('Failed to save note'),
+            error => this.error(error),
             () => {
                 this.isEditing = false;
             }
