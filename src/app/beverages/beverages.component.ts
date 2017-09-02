@@ -55,7 +55,9 @@ import {ModalService} from "../common/modal.service";
             </div>
         </form>
 
-        <table class="table table-hover table-responsive">
+        <loading-spinner [hidden]="!isLoadingData"></loading-spinner>
+
+        <table class="table table-hover table-responsive" [hidden]="isLoadingData">
             <thead>
             <tr class="header">
                 <th><a href="javascript:void(0)" (click)="sort('name')">Name</a></th>
@@ -95,6 +97,7 @@ export class BeveragesComponent implements OnInit {
     sortKey: string;
     sortReverse: boolean;
     beverageCategory: number;
+    isLoadingData: boolean;
 
     constructor(
         private router: Router,
@@ -134,11 +137,13 @@ export class BeveragesComponent implements OnInit {
 
     setBeverageCategory(category: BeverageCategory): void {
         this.beverageCategory = category;
+        this.isLoadingData = true;
         this.beveragesService.list(category).subscribe(
             next => {
                 this.beverages = next;
                 this.sort();
                 this.filteredBeverages = this.beverages;
+                this.isLoadingData = false;
             },
             error => this.modalService.error(error)
         );

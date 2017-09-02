@@ -24,13 +24,14 @@ import {ModalService} from "../common/modal.service";
         <hr>
         <markdown [data]="note.text"></markdown>
     </div>
+    
+    <loading-spinner [hidden]="!isLoadingData"></loading-spinner>
 
     <form>
         <div [hidden]="!isEditing">
             <div class="form-group">
                 <label>Title</label>
-                <input type="text"
-                       class="form-control"
+                <input class="form-control"
                        [(ngModel)]="note.title"
                        name="title">
             </div>
@@ -65,6 +66,7 @@ export class NoteComponent implements OnInit {
     note: Note;
     noteBackup: Note;
     isEditing: boolean;
+    isLoadingData: boolean;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -82,11 +84,14 @@ export class NoteComponent implements OnInit {
 
     ngOnInit(): void {
         this.note = new Note();
+        this.note.title = '';
         this.isEditing = false;
+        this.isLoadingData = true;
         this.activatedRoute.params.subscribe((params: Params) => {
             if (params['id']) {
                 this.notesService.get(+params['id']).subscribe(
                     data => {
+                        this.isLoadingData = false;
                         this.note = data;
                         this.noteBackup = data;
                     },
