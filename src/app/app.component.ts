@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserRef} from "./main/user.model";
 import {AuthService} from "./main/auth.service";
-import {HttpClient} from "./common/http-client.service";
 
 @Component({
     selector: 'app-root',
@@ -12,7 +10,6 @@ export class AppComponent implements OnInit {
     errorMessage: string;
 
     constructor(
-        private httpClient: HttpClient,
         private authService: AuthService
     ) {
     }
@@ -32,25 +29,24 @@ export class AppComponent implements OnInit {
 
     //noinspection JSUnusedGlobalSymbols
     login() {
-        this.httpClient.post('/api/login', this.user).subscribe(
-            res => this.loginSuccess(res),
+        this.authService.login(this.user).subscribe(
+            next => this.loginSuccess(),
             err => this.loginError(err)
-        );
+        )
     }
 
     //noinspection JSUnusedGlobalSymbols
     logout() {
-         this.authService.setLoggedOut();
+         this.authService.logout();
     }
 
-    loginSuccess(data: UserRef) {
-        this.authService.setLoggedIn(data);
+    loginSuccess() {
         this.errorMessage = undefined;
         this.user.password = '';
     }
 
     loginError(data: { status: number, statusText: string }) {
-        this.authService.setLoggedOut();
+        this.authService.logout();
         this.errorMessage = `${data.status} - ${data.statusText}`;
     }
 }
